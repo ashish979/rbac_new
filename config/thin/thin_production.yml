@@ -1,0 +1,13 @@
+pid: tmp/pids/thin.pid
+timeout: 60
+wait: 60
+log: log/thin.log
+max_conns: 1024
+require: []
+environment: production
+max_persistent_conns: 512
+servers: 5
+threaded: true
+daemonize: true
+port: 3000
+tag: erp

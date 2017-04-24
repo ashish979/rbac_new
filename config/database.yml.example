@@ -1,0 +1,27 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  pool: 5
+
+development:
+  <<: *default
+  database: erp_development
+  username: tinglado
+  password: password
+
+testing:
+  <<: *default
+  database: erp_testing
+
+test:
+  <<: *default
+  database: erp_test
+
+production:
+  <<: *default
+  database: erp_production
+  username: erp
+  password: <%= ENV['ERP_DATABASE_PASSWORD'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
