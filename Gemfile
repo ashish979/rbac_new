@@ -33,7 +33,8 @@ gem 'bootstrap-sass', '~> 3.3'
 gem 'rails-assets-tether', '>= 1.1.0'
 # font awesome for icons
 gem 'font-awesome-rails', '~> 4.6.3'
-
+# for authentication
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

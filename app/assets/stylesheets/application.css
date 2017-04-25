@@ -11,8 +11,9 @@
  * It is generally better to create a new file per style scope.
  *
  *= require font-awesome
- *= require AdminLTE
  *= require skin-blue
+ *= require bootstrap-sass
+ *= require AdminLTE
  *= require main
  *= require_self
  */

@@ -1,0 +1,34 @@
+<div class="login-box login-div">
+  <div class="box box-solid box-default text-center center-block">
+    <div class="box-header with-border">
+      <h3 class="box-title">Change your password</h3>
+    </div><!-- /.box-header -->
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, :class => 'form-horizontal' }) do |f| %>
+      <div class="box-body">
+        <%= devise_error_messages! %>
+        <%= f.hidden_field :reset_password_token %>
+
+        <div class="form-group">
+          <%= f.label :password, 'New password', class: 'col-sm-4 control-label' %>
+          <div class="col-sm-8">
+            <%= f.password_field :password, autofocus: true, autocomplete: 'off', class: 'form-control', placeholder: 'Password' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation, 'Confirm password', class: 'col-sm-4 control-label' %>
+          <div class="col-sm-8">
+            <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control', placeholder: 'Password' %>
+          </div>
+        </div>
+
+        <div class="actions">
+          <%= f.submit 'Change my password', class: 'btn btn-md btn-success btn-x1' %>
+        </div>
+      </div>
+    <% end %>
+    <div class="box-footer">
+      <%= render 'devise/shared/links' %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="login-box login-div">
+  <div class="box box-solid box-default text-center center-block">
+    <div class="box-header with-border">
+      <h3 class="box-title">Forgot your password</h3>
+    </div><!-- /.box-header -->
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, :class => 'form-horizontal' }) do |f| %>
+      <div class="box-body">
+        <%= devise_error_messages! %>
+
+        <div class="form-group">
+          <%= f.label :email, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-8">
+            <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'you@example.com' %>
+          </div>
+        </div>
+
+        <div class="actions">
+          <%= f.submit 'Send me reset password instructions', class: 'btn btn-md btn-success btn-x1' %>
+        </div>
+      </div>
+    <% end %>
+    <div class="box-footer">
+      <%= render 'devise/shared/links' %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="login-box login-div">
+  <div class="box box-solid box-default text-center center-block">
+    <div class="box-header with-border">
+      <h3 class="box-title">Login</h3>
+    </div><!-- /.box-header -->
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'form-horizontal'}) do |f| %>
+      <div class="box-body">
+        <div class="form-group">
+          <%= f.label :email, class: 'col-sm-3 control-label' %>
+          <div class="col-sm-8">
+            <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'you@example.com' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password, class: 'col-sm-3 control-label' %>
+          <div class="col-sm-8">
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
+          </div>
+        </div>
+
+        <% if devise_mapping.rememberable? -%>
+          <div>
+            <%= f.check_box :remember_me, class: 'checkbox-inline' %>
+            <%= f.label :remember_me, 'Stay Logged In' %>
+          </div>
+        <% end -%>
+        <%= f.submit 'Sign in', class: 'btn btn-sm btn-success btn-x1' %>
+      </div><!-- /.box-body -->
+    <% end %>
+
+    <div class="box-footer">
+      <%= render "devise/shared/links" %>
+    </div><!-- box-footer -->
+  </div><!-- /.box -->
+</div>
