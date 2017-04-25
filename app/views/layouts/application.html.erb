@@ -8,7 +8,15 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="layout-top-nav skin-blue ">
+    <div class="wrapper">
+      <%= render partial: 'shared/top_nav' %>
+      <div class="content-wrapper">
+        <section class="content container">
+          <%= yield %>
+        </section>
+      </div>
+      <%= render partial: 'shared/app_footer' %>
+    </div>
   </body>
 </html>

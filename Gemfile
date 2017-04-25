@@ -27,6 +27,13 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+# bootstrap for css styling
+gem 'bootstrap-sass', '~> 3.3'
+# required for bootstrap tooltip
+gem 'rails-assets-tether', '>= 1.1.0'
+# font awesome for icons
+gem 'font-awesome-rails', '~> 4.6.3'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
