@@ -1,0 +1,14 @@
+<div class="error_group">
+  <% if x.errors.any? %>
+      <label>
+        <%= pluralize(x.errors.count, 'error') %> prohibited this <%= x.class.name %> from being saved:
+      </label>
+      <ul>
+        <% x.errors.full_messages.each do |message| %>
+            <li>
+              <%= message %>
+            </li>
+        <% end %>
+      </ul>
+  <% end %>
+</div>

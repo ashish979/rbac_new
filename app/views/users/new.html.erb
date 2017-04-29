@@ -1,0 +1,18 @@
+<div class="login-box login-div">
+  <div class="box box-solid box-default center-block">
+    <div class="box-header with-border text-center">
+      <h3 class="box-title">New User</h3>
+    </div><!-- /.box-header -->
+    <%= form_for @user, url: create_user_users_path, :html => {:class => 'form-horizontal'} do |f| %>
+        <div class="box-body">
+
+          <%= render partial: 'form', locals: { f: f } %>
+
+          <div>
+            <span class="margin-l-40"><%= link_to 'Cancel', users_path%></span>
+            <%= f.submit 'Create', class: 'btn btn-sm btn-success pull-right margin-r-40' %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

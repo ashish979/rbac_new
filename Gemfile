@@ -35,6 +35,8 @@ gem 'rails-assets-tether', '>= 1.1.0'
 gem 'font-awesome-rails', '~> 4.6.3'
 # for authentication
 gem 'devise'
+# for pagination
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

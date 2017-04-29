@@ -1,0 +1,28 @@
+<%= render partial: 'shared/errors', locals: { x: @user } %>
+<div class="form-group">
+  <%= f.label :full_name, class: 'col-sm-4 control-label' %>
+  <div class="col-sm-7">
+    <%= f.text_field :full_name, autofocus: true, class: 'form-control', placeholder: 'William' %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :email, class: 'col-sm-4 control-label' %>
+  <div class="col-sm-7">
+    <%= f.email_field :email, class: 'form-control', placeholder: 'you@example.com' %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :password, class: 'col-sm-4 control-label' %>
+  <div class="col-sm-7">
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password'  %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :password_confirmation, 'Confirm Password', class: 'col-sm-4 control-label' %>
+  <div class="col-sm-7">
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Password'  %>
+  </div>
+</div>
