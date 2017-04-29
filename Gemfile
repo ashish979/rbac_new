@@ -37,6 +37,8 @@ gem 'font-awesome-rails', '~> 4.6.3'
 gem 'devise'
 # for pagination
 gem 'kaminari'
+# for exception notification
+gem 'exception_notification'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
