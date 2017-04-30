@@ -1,0 +1,37 @@
+<div class="margin-bottom">
+  <span class="h3">Roles</span>
+  <span><%= link_to 'New Role', new_role_path, class: 'btn btn-md btn-success pull-right' if can? :create, Role %></span>
+</div>
+<div class="box">
+  <div class="box-body">
+    <table class='table table-bordered table-hover'>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Created At</th>
+          <th>Updated At</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      <% @roles.each do |role| %>
+          <tr>
+            <td><%= link_to role.name, role %></td>
+            <td><%= role.description %></td>
+            <td><%= date_with_time(role.created_at) %></td>
+            <td><%= date_with_time(role.updated_at) %></td>
+            <td>
+              <%= link_to 'Edit', edit_role_path(role.id), class: 'btn btn-sm btn-info' if can? :edit, Role %>
+              <%= link_to 'Delete', role_path(role.id), method: 'delete', data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' if current_user.super_admin? %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <%= paginate @roles %>
+    <%= page_entries_info @roles %>
+  </div>
+</div>

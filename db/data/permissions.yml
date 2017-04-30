@@ -1,0 +1,42 @@
+production: &default
+
+  permissions:
+  #permissions for user
+    - action: "manage"
+      subject_class: "User"
+      description: "manage users"
+    - action: "create"
+      subject_class: "User"
+      description: "create users"
+    - action: "read"
+      subject_class: "User"
+      description: "view users"
+    - action: "update"
+      subject_class: "User"
+      description: "update users"
+
+    #permissions for role
+    - action: "manage"
+      subject_class: "Role"
+      description: "manage roles"
+    - action: "create"
+      subject_class: "Role"
+      description: "create roles"
+    - action: "read"
+      subject_class: "Role"
+      description: "view roles"
+    - action: "update"
+      subject_class: "Role"
+      description: "update roles"
+    - action: "update"
+      subject_class: "Role"
+      description: "update roles"
+
+development:
+  <<: *default
+
+testing:
+  <<: *default
+
+staging:
+  <<: *default

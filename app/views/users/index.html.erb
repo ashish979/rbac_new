@@ -1,6 +1,6 @@
 <div class="margin-bottom">
   <span class="h3">Users</span>
-  <span><%= link_to 'New User', new_user_path, class: 'btn btn-md btn-success pull-right' %></span>
+  <span><%= link_to 'New User', new_user_path, class: 'btn btn-md btn-success pull-right' if can? :create, User %></span>
 </div>
 <div class="box">
   <div class="box-body">
@@ -25,8 +25,8 @@
             <td><%= date_with_time(user.updated_at) %></td>
             <td></td>
             <td>
-              <%= link_to 'Edit', edit_user_path(user.id), class: 'btn btn-sm btn-info' %>
-              <%= link_to 'Delete', user_path(user.id), method: 'delete', data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+              <%= link_to 'Edit', edit_user_path(user.id), class: 'btn btn-sm btn-info' if can? :edit, User %>
+              <%= link_to 'Delete', user_path(user.id), method: 'delete', data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' if current_user.super_admin? %>
             </td>
           </tr>
         <% end %>

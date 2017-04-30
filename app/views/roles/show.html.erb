@@ -1,0 +1,70 @@
+<div class="margin-bottom">
+  <span class="h3"><%= @role.name %></span>
+</div>
+
+<div class="col-md-6">
+  <div class="box box-solid box-default center-block">
+    <div class="box-header with-border text-center">
+      <h3 class="box-title">Role details</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+      <table class="table table-bordered">
+        <tr>
+          <th>Name</th>
+          <td><%= @role.name %></td>
+        </tr>
+        <tr>
+          <th>Description</th>
+          <td><%= @role.description %></td>
+        </tr>
+        <tr>
+          <th>UUID</th>
+          <td><%= @role.uuid %></td>
+        </tr>
+        <tr>
+          <th>Created at</th>
+          <td><%= date_with_time @role.created_at %></td>
+        </tr>
+        <tr>
+          <th>Updated At</th>
+          <td><%= date_with_time @role.updated_at %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6">
+  <div class="box box-solid box-default center-block">
+    <div class="box-header with-border text-center">
+      <h3 class="box-title">Permissions</h3>
+    </div><!-- /.box-header -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <% if @role.uuid == 'super_admin' %>
+            <fieldset class="scheduler-border">
+              <legend class="scheduler-border">Everything</legend>
+                <div class="col-md-5">
+                  Manage everything
+                </div>
+            </fieldset>
+          <% else %>
+            <% @role_permissions.each do |subject_class, permissions| %>
+              <% if subject_class != 'Permission' %>
+                <fieldset class="scheduler-border">
+                  <legend class="scheduler-border"><%= subject_class %></legend>
+                  <% permissions.each do |p| %>
+                    <div class="col-md-4">
+                      <%= p.description %>
+                    </div>
+                  <% end %>
+                </fieldset>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="login-div col-md-6">
+  <div class="box box-solid box-default center-block">
+    <div class="box-header with-border text-center">
+      <h3 class="box-title">Edit Role</h3>
+    </div><!-- /.box-header -->
+    <%= form_for @role, url: role_path, method: :put, :html => {:class => 'form-horizontal'} do |f| %>
+        <div class="box-body">
+
+          <%= render partial: 'shared/errors', locals: { x: @role } %>
+          <div class="form-group">
+            <%= f.label :name, class: 'col-sm-4 control-label' %>
+            <div class="col-sm-7">
+              <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :description, class: 'col-sm-4 control-label' %>
+            <div class="col-sm-7">
+              <%= f.text_field :description, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div>
+            <span class="margin-l-40"><%= link_to 'Cancel', roles_path %></span>
+            <%= f.submit 'Update', class: 'btn btn-sm btn-success pull-right margin-r-40' %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="col-md-6">
+  <div class="box box-solid box-default center-block">
+    <div class="box-header with-border text-center">
+      <h3 class="box-title">Permissions</h3>
+    </div><!-- /.box-header -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <% @permissions.each do |subject_class, permissions| %>
+              <% if subject_class != 'Permission' %>
+                  <fieldset class="scheduler-border">
+                    <legend class="scheduler-border"><%= subject_class %></legend>
+                    <% permissions.each do |p| %>
+                      <div class="col-md-4">
+                        <% checked = @role_permissions.include?(p) %>
+                        <%= check_box nil, nil, checked: checked, :class => 'checkbox-inline permission_checkbox', :onclick => "App.role.updatePermission(#{@role.id}, #{p.id})", :id => "perm-#{p.id}" %>
+                        <%= p.description %>
+                      </div>
+                    <% end %>
+                  </fieldset>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     render file: 'pages/error_404', layout: 'error', status: 404
   end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    render file: 'pages/error_403', layout: 'error', status: 403
+  end
+
   private
 
   def configure_permitted_parameters

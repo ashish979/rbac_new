@@ -10,10 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425094226) do
+ActiveRecord::Schema.define(version: 20170429132527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "permissions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "action"
+    t.string   "subject_class"
+    t.integer  "subject_id"
+    t.string   "uuid"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["uuid"], name: "index_permissions_on_uuid", unique: true, using: :btree
+  end
+
+  create_table "permissions_roles", id: false, force: :cascade do |t|
+    t.integer "role_id",       null: false
+    t.integer "permission_id", null: false
+    t.index ["permission_id", "role_id"], name: "index_permissions_roles_on_permission_id_and_role_id", using: :btree
+    t.index ["role_id", "permission_id"], name: "index_permissions_roles_on_role_id_and_permission_id", using: :btree
+    t.index ["role_id", "permission_id"], name: "role_permission_uniqueness", unique: true, using: :btree
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "uuid"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["uuid"], name: "index_roles_on_uuid", unique: true, using: :btree
+  end
+
+  create_table "roles_users", id: false, force: :cascade do |t|
+    t.integer "role_id", null: false
+    t.integer "user_id", null: false
+    t.index ["role_id", "user_id"], name: "index_roles_users_on_role_id_and_user_id", using: :btree
+    t.index ["role_id", "user_id"], name: "role_user_uniqueness", unique: true, using: :btree
+    t.index ["user_id", "role_id"], name: "index_roles_users_on_user_id_and_role_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "full_name",              default: "", null: false

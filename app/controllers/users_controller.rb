@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @users = User.all.order('id desc').page(params[:page]).per(10)
   end
 
   def show
     @user = User.find(params[:id])
+    @user_roles = @user.roles.to_a
   end
 
   def new
@@ -24,6 +27,8 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @roles = Role.all
+    @user_roles = @user.roles.to_a
   end
 
   def update
@@ -46,6 +51,29 @@ class UsersController < ApplicationController
       render users_path
     end
   end
+
+  def assign_role
+    user = User.find(params[:id])
+    role = Role.find(params[:role_id])
+
+    if user.assign_role(role)
+      render json: { success: 'Role Assigned' }
+    else
+      render json: { error: 'There was some problem' }, status: :unprocessable_entity
+    end
+  end
+
+  def unassign_role
+    user = User.find(params[:id])
+    role = Role.find(params[:role_id])
+
+    if user.unassign_role(role)
+      render json: { success: 'Role Unassigned' }
+    else
+      render json: { error: 'There was some problem' }, status: :unprocessable_entity
+    end
+  end
+
 
   private
 

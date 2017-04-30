@@ -2,8 +2,11 @@
   <span class="h3"><%= @user.full_name %></span>
 </div>
 
-<div class="col-md-8">
-  <div class="box">
+<div class="col-md-6">
+  <div class="box box-solid box-default center-block">
+    <div class="box-header with-border text-center">
+      <h3 class="box-title">User details</h3>
+    </div><!-- /.box-header -->
     <div class="box-body">
       <table class="table table-bordered">
         <tr>
@@ -38,6 +41,24 @@
           <th>Last signed in IP</th>
           <td><%= @user.last_sign_in_ip %></td>
         </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6">
+  <div class="box box-solid box-default center-block">
+    <div class="box-header with-border text-center">
+      <h3 class="box-title">Roles</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+      <table class="table table-bordered">
+        <% @user_roles.each do |role| %>
+          <tr>
+            <th><%= role.name %></th>
+            <td><%= role.description %></td>
+          </tr>
+        <% end %>
       </table>
     </div>
   </div>

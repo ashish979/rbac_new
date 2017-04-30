@@ -1,0 +1,38 @@
+<div class="login-box login-div">
+  <div class="box box-solid box-default center-block">
+    <div class="box-header with-border text-center">
+      <h3 class="box-title">New Role</h3>
+    </div><!-- /.box-header -->
+    <%= form_for @role, url: roles_path, method: :post, :html => {:class => 'form-horizontal'} do |f| %>
+        <div class="box-body">
+
+          <%= render partial: 'shared/errors', locals: { x: @role } %>
+          <div class="form-group">
+            <%= f.label :name, class: 'col-sm-4 control-label' %>
+            <div class="col-sm-7">
+              <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :description, class: 'col-sm-4 control-label' %>
+            <div class="col-sm-7">
+              <%= f.text_field :description, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :uuid, class: 'col-sm-4 control-label' %>
+            <div class="col-sm-7">
+              <%= f.text_field :uuid, class: 'form-control', placeholder: 'must be unique'  %>
+            </div>
+          </div>
+
+          <div>
+            <span class="margin-l-40"><%= link_to 'Cancel', roles_path %></span>
+            <%= f.submit 'Create', class: 'btn btn-sm btn-success pull-right margin-r-40' %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

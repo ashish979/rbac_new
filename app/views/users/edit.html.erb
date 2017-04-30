@@ -1,4 +1,4 @@
-<div class="login-box login-div">
+<div class="login-div col-md-6">
   <div class="box box-solid box-default center-block">
     <div class="box-header with-border text-center">
       <h3 class="box-title">Edit User</h3>
@@ -14,5 +14,29 @@
           </div>
         </div>
     <% end %>
+  </div>
+</div>
+
+<div class="col-md-6">
+  <div class="box box-solid box-default center-block">
+    <div class="box-header with-border text-center">
+      <h3 class="box-title">Permissions</h3>
+    </div><!-- /.box-header -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <% @roles.each do |role| %>
+              <div class="checkbox">
+                <label>
+                  <% checked = @user_roles.include?(role) %>
+                  <%= check_box nil, nil, checked: checked, :class => 'roles_checkbox', :onclick => "App.user.updateRole( #{@user.id}, #{role.id})", :id => "role-#{role.id}" %>
+                  <%= role.name %>
+                </label>
+              </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
   </div>
 </div>
