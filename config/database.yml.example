@@ -7,7 +7,7 @@ default: &default
 development:
   <<: *default
   database: erp_development
-  username: tinglado
+  username: ashish
   password: password
 
 testing:

@@ -1,7 +1,7 @@
 production: &default
 
   permissions:
-  #permissions for user
+    #permissions for user
     - action: "manage"
       subject_class: "User"
       description: "manage users"
@@ -28,9 +28,12 @@ production: &default
     - action: "update"
       subject_class: "Role"
       description: "update roles"
-    - action: "update"
+    - action: "set_permission"
       subject_class: "Role"
-      description: "update roles"
+      description: "set permissions for roles"
+    - action: "remove_permission"
+      subject_class: "Role"
+      description: "remove permissions for roles"
 
 development:
   <<: *default

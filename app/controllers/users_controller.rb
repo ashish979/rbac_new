@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource
+  layout 'admin'
+  authorize_resource
 
   def index
     @users = User.all.order('id desc').page(params[:page]).per(10)
@@ -80,8 +81,7 @@ class UsersController < ApplicationController
   def user_params
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
-    # extracting username from email id (user doesn't need to provide username)
-    params.require(:user).permit(:full_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :middle_name, :last_name, :email, :password, :password_confirmation)
   end
 
 end

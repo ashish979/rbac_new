@@ -11,6 +11,11 @@ module Erp
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    config.eager_load_paths << Rails.root.join('lib')
+
+    config.time_zone = 'New Delhi'
+
     config.action_mailer.default_url_options = { host: Rails.application.secrets.app_host }
 
     config.action_mailer.smtp_settings = {

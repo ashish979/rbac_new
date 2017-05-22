@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/activerecord-hackery/ransack.git
+  revision: f749d08fb86a30ae2b8f7ef9bb8b0446dc4cc363
+  specs:
+    ransack (1.8.2)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -56,6 +67,8 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap3-datetimepicker-rails (4.17.47)
+      momentjs-rails (>= 2.8.1)
     builder (3.2.3)
     bullet (5.5.1)
       activesupport (>= 3.0.0)
@@ -142,6 +155,8 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
+    momentjs-rails (2.17.1)
+      railties (>= 3.1)
     multi_json (1.12.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -151,6 +166,8 @@ GEM
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
     pg (0.20.0)
+    polyamorous (1.3.1)
+      activerecord (>= 3.0)
     public_suffix (2.0.5)
     rack (2.0.1)
     rack-test (0.6.3)
@@ -244,6 +261,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.3)
+  bootstrap3-datetimepicker-rails (~> 4.17.47)
   bullet
   byebug
   cancancan (~> 1.10)
@@ -259,9 +277,11 @@ DEPENDENCIES
   kaminari
   letter_opener
   listen (~> 3.0.5)
+  momentjs-rails (>= 2.9.0)
   pg (~> 0.18)
   rails (~> 5.0.2)
   rails-assets-tether (>= 1.1.0)
+  ransack!
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
@@ -273,7 +293,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.3.1p112
+   ruby 2.4.0p0
 
 BUNDLED WITH
-   1.14.6
+   1.15.1

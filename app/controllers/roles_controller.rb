@@ -1,6 +1,7 @@
 class RolesController < ApplicationController
+  layout 'admin'
   before_action :set_role, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+  authorize_resource
 
   def index
     @roles = Role.all.order('id desc').page(params[:page]).per(10)

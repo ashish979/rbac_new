@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.4.0'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -43,6 +43,11 @@ gem 'kaminari'
 gem 'exception_notification'
 # for authorization
 gem 'cancancan', '~> 1.10'
+# for filters
+gem 'ransack', github: 'activerecord-hackery/ransack'
+# Bootstrap datetime picker for rails
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 group :deployment do
   gem 'capistrano', '~> 3.6'

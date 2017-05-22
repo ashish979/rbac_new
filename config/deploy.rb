@@ -1,14 +1,14 @@
 # config valid only for current version of Capistrano
 lock "3.8.1"
 
-set :application, "tinglado_erp"
-set :repo_url, "git@gitlab.com:tinglado/erp.git"
+set :application, "rbac_app"
+set :repo_url, "github.com/example/example.git"
 
 # Default branch is :develop
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/opt/tinglado_apps/erp'
+set :deploy_to, '/usr/local/rbac'
 
 set :user, 'deploy'
 
@@ -21,7 +21,7 @@ set :use_sudo, false
 # set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
 
 # Default value for :pty is false
-# set :pty, true
+set :pty, true
 
 # Default value for :linked_files is []
 append :linked_files, "config/database.yml", "config/secrets.yml"
@@ -41,7 +41,7 @@ namespace :app do
     task :start do
       on roles(:app) do |h|
         begin
-          execute "cd #{fetch :rails_dir} && bundle exec thin start -C config/thin/thin_#{fetch :rails_env}.yml"
+          execute "cd #{fetch :rails_dir} && thin start -C config/thin/thin_#{fetch :rails_env}.yml"
           info 'Started Server(s).'
         rescue
           info "Server could not be started on host #{h}"
@@ -53,7 +53,7 @@ namespace :app do
     task :stop do
       on roles(:app) do |h|
         begin
-          execute "cd #{fetch :rails_dir} && bundle exec thin stop -C config/thin/thin_#{fetch :rails_env}.yml"
+          execute "cd #{fetch :rails_dir} && thin stop -C config/thin/thin_#{fetch :rails_env}.yml"
           info 'Stopped Server(s).'
         rescue
           info "Server was not running on host #{h}"

@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include AmountSplitter
+
   def flash_class(flash_type)
     hash_map = {
         success: 'bg-green',
@@ -36,4 +38,65 @@ module ApplicationHelper
     end
     result
   end
+
+  def display_field(field)
+    field.present? ? field : '-'
+  end
+
+  def float_and_round(field)
+    field.to_f.round(2)
+  end
+
+  def date_field(name, value = nil, options = {})
+    "<span class='input-group datepicker'>
+      #{text_field_tag name, value, options}
+      <span class='input-group-addon'>
+        <i class='fa fa-calendar' aria-hidden='true'></i>
+      </span>
+    </span>".html_safe
+  end
+
+  def ransack_date_field(f, name, options = {})
+    placeholder = options[:placeholder] || 'YYYY-MM-DD'
+    options = options.merge(placeholder: placeholder)
+    "<span class='input-group datepicker'>
+      #{f.search_field name, options}
+      <span class='input-group-addon'>
+        <i class='fa fa-calendar' aria-hidden='true'></i>
+      </span>
+    </span>".html_safe
+  end
+
+  def time_field(method, options = {})
+    "<span class='input-group timepicker'>
+      #{text_field method, options}
+      <span class='input-group-addon'>
+        <i class='fa fa-clock-o' aria-hidden='true'></i>
+      </span>
+    </span>".html_safe
+  end
 end
+
+class CustomFormBuilder < ActionView::Helpers::FormBuilder
+  include ActionView::Helpers::AssetTagHelper
+
+  def date_field(method, options = {})
+    "<span class='input-group datepicker'>
+      #{text_field method, options}
+      <span class='input-group-addon'>
+        <i class='fa fa-calendar' aria-hidden='true'></i>
+      </span>
+    </span>".html_safe
+  end
+
+  def time_field(method, options = {})
+    "<span class='input-group timepicker'>
+      #{text_field method, options}
+      <span class='input-group-addon'>
+        <i class='fa fa-clock-o' aria-hidden='true'></i>
+      </span>
+    </span>".html_safe
+  end
+end
+
+ActionView::Base.default_form_builder = CustomFormBuilder

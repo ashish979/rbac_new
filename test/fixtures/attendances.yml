@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  teacher_id: 1
+  salary_date: 2017-06-19
+  in_time: 2017-06-19 20:06:11
+  out_time: 2017-06-19 20:06:11
+  holiday: false
+
+two:
+  teacher_id: 1
+  salary_date: 2017-06-19
+  in_time: 2017-06-19 20:06:11
+  out_time: 2017-06-19 20:06:11
+  holiday: false

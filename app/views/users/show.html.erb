@@ -1,17 +1,28 @@
 <div class="margin-bottom">
   <span class="h3"><%= @user.full_name %></span>
+  <span class="pull-right">
+    <%= link_to 'Edit', edit_user_path(@user.id), class: 'btn btn-sm btn-info' if can? :edit, User %>
+  </span>
 </div>
 
 <div class="col-md-6">
-  <div class="box box-solid box-default center-block">
+  <div class="box box-solid box-default">
     <div class="box-header with-border text-center">
       <h3 class="box-title">User details</h3>
     </div><!-- /.box-header -->
     <div class="box-body">
       <table class="table table-bordered">
         <tr>
-          <th>Full Name</th>
-          <td><%= @user.full_name %></td>
+          <th>First Name</th>
+          <td><%= @user.first_name %></td>
+        </tr>
+        <tr>
+          <th>Middle Name</th>
+          <td><%= @user.middle_name %></td>
+        </tr>
+        <tr>
+          <th>Last Name</th>
+          <td><%= @user.last_name %></td>
         </tr>
         <tr>
           <th>Email</th>
@@ -47,19 +58,27 @@
 </div>
 
 <div class="col-md-6">
-  <div class="box box-solid box-default center-block">
+  <div class="box box-solid box-default">
     <div class="box-header with-border text-center">
       <h3 class="box-title">Roles</h3>
     </div><!-- /.box-header -->
     <div class="box-body">
       <table class="table table-bordered">
-        <% @user_roles.each do |role| %>
+        <% if !@user_roles.present? %>
           <tr>
-            <th><%= role.name %></th>
-            <td><%= role.description %></td>
+            <td>No roles assigned</td>
           </tr>
+        <% else %>
+          <% @user_roles.each do |role| %>
+            <tr>
+              <th><%= role.name %></th>
+              <td><%= role.description %></td>
+            </tr>
+          <% end %>
         <% end %>
       </table>
     </div>
   </div>
 </div>
+
+<div class="clearfix"></div>

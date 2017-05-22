@@ -1,8 +1,3 @@
-.footer{
-  background-color: #367fa9;
-  color: #ffffff;
-}
-
 .login-box{
   width: 500px;
 }
@@ -42,4 +37,29 @@ fieldset.scheduler-border {
   margin: 0 0 1.5em 0 !important;
   -webkit-box-shadow:  0px 0px 0px 0px #000;
   box-shadow:  0px 0px 0px 0px #000;
+}
+
+.checkbox + .checkbox{
+  margin-top: 10px;
+}
+
+.mandatory{
+  color:red;
+}
+
+.red-background{
+  background-color: #ff5e4e;
+  color: white;
+  a{
+    color: white;
+  }
+}
+
+
+.red-background:hover{
+  background-color: inherit;
+  color: inherit;
+  a{
+    color: inherit;
+  }
 }

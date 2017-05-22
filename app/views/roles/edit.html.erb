@@ -1,4 +1,4 @@
-<div class="login-div col-md-6">
+<div class="login-div col-md-5">
   <div class="box box-solid box-default center-block">
     <div class="box-header with-border text-center">
       <h3 class="box-title">Edit Role</h3>
@@ -30,23 +30,25 @@
   </div>
 </div>
 
-<div class="col-md-6">
+<div class="col-md-7">
   <div class="box box-solid box-default center-block">
     <div class="box-header with-border text-center">
       <h3 class="box-title">Permissions</h3>
     </div><!-- /.box-header -->
     <div class="container">
       <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-6">
           <% @permissions.each do |subject_class, permissions| %>
               <% if subject_class != 'Permission' %>
                   <fieldset class="scheduler-border">
                     <legend class="scheduler-border"><%= subject_class %></legend>
                     <% permissions.each do |p| %>
-                      <div class="col-md-4">
-                        <% checked = @role_permissions.include?(p) %>
-                        <%= check_box nil, nil, checked: checked, :class => 'checkbox-inline permission_checkbox', :onclick => "App.role.updatePermission(#{@role.id}, #{p.id})", :id => "perm-#{p.id}" %>
-                        <%= p.description %>
+                      <div class="checkbox col-sm-4">
+                        <label>
+                          <% checked = @role_permissions.include?(p) %>
+                          <%= check_box nil, nil, checked: checked, :class => 'permission_checkbox', :onclick => "App.role.updatePermission(#{@role.id}, #{p.id})", :id => "perm-#{p.id}" %>
+                          <%= p.description %>
+                        </label>
                       </div>
                     <% end %>
                   </fieldset>
@@ -57,3 +59,5 @@
     </div>
   </div>
 </div>
+
+<div class="clearfix"></div>

@@ -1,4 +1,6 @@
 class Role < ApplicationRecord
+  include Uuidable
+
   #associations
   has_and_belongs_to_many :users, uniq: true
   has_and_belongs_to_many :permissions, uniq: true

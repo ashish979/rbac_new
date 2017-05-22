@@ -7,11 +7,10 @@
     <table class='table table-bordered table-hover'>
       <thead>
         <tr>
-          <th>Name</th>
+          <th>Full Name</th>
           <th>Email</th>
           <th>Created At</th>
           <th>Updated At</th>
-          <th>Type</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -23,7 +22,6 @@
             <td><%= user.email %></td>
             <td><%= date_with_time(user.created_at) %></td>
             <td><%= date_with_time(user.updated_at) %></td>
-            <td></td>
             <td>
               <%= link_to 'Edit', edit_user_path(user.id), class: 'btn btn-sm btn-info' if can? :edit, User %>
               <%= link_to 'Delete', user_path(user.id), method: 'delete', data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' if current_user.super_admin? %>

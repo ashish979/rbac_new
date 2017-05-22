@@ -1,5 +1,6 @@
 <div class="margin-bottom">
   <span class="h3"><%= @role.name %></span>
+  <span class="pull-right"><%= link_to 'Edit', edit_role_path(@role.id), class: 'btn btn-sm btn-info' if can? :edit, Role %></span>
 </div>
 
 <div class="col-md-6">
@@ -42,7 +43,14 @@
     <div class="container">
       <div class="row">
         <div class="col-md-5">
-          <% if @role.uuid == 'super_admin' %>
+          <% if !@role_permissions.present? %>
+            <fieldset class="scheduler-border">
+              <legend class="scheduler-border">-</legend>
+                <div class="col-md-6">
+                  No permission assigned
+                </div>
+            </fieldset>
+          <% elsif @role.uuid == 'super_admin' %>
             <fieldset class="scheduler-border">
               <legend class="scheduler-border">Everything</legend>
                 <div class="col-md-5">
@@ -68,3 +76,5 @@
     </div>
   </div>
 </div>
+
+<div class="clearfix"></div>

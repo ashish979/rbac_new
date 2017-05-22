@@ -1,4 +1,4 @@
-# Fee and admission management (FAM)
+Role based access control
 ------------------------------------
 
 Steps to run the application:

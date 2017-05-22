@@ -6,11 +6,11 @@ Dir.glob('db/seeders/*.rb').each do |file|
   load file
 end
 
-klasses = [RoleSeeder, PermissionSeeder]
+klasses = [PermissionSeeder, RoleSeeder]
 klasses.each do |klass|
   klass.new.seed
 end
 
 super_admin_role = Role.create(name: "Super Admin", uuid: "super_admin", description: "super admin of the application")
-super_admin_user = User.create(full_name: 'Admin', email: 'admin@tinglado.in', password: 'tingladoErp@1234', password_confirmation: 'tingladoErp@1234')
+super_admin_user = User.create(first_name: 'Super', last_name: 'Admin', email: 'ashishagrawal979@gmail.com', password: '12345678', password_confirmation: '12345678')
 super_admin_user.assign_role(super_admin_role)

@@ -5,11 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable
 
   #validations
-  validates :full_name, presence: true
+  validates :first_name, :last_name, presence: true
 
   #associations
   has_and_belongs_to_many :roles, uniq: true
   has_many :permissions, through: :roles
+
+  def full_name
+    "#{first_name} #{ middle_name ?  middle_name : ''} #{last_name}"
+  end
 
   def super_admin?
     roles.include?(Role.super_admin)

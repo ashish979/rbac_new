@@ -2,13 +2,12 @@
 # ======================
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
-set :rvm_ruby_version, '2.3.1'
 
-server 'ec2-35-161-130-192.us-west-2.compute.amazonaws.com', user: 'deploy', roles: %w{app db web}
+server 'ec2-34-210-17-11.us-west-2.compute.amazonaws.com', user: 'deploy', roles: %w{app db web}
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-set :rails_dir, '/opt/tinglado_apps/erp/current'
+set :rails_dir, '/usr/local/rbac/current'
 set :rails_env, 'testing'
 
 # role-based syntax
@@ -34,7 +33,6 @@ set :rails_env, 'testing'
 # Feel free to add new variables to customise your setup.
 
 
-
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a
@@ -45,7 +43,7 @@ set :rails_env, 'testing'
 # --------------
  set :ssh_options, {
    user: 'deploy',
-   keys: %w(/home/ashish/key-pairs/tinglado-deploy.pem),
+   keys: %w(/Users/ashish.agrawal/key-pairs/sample.pem),
    forward_agent: false,
    auth_methods: %w( publickey password)
  }

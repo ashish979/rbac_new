@@ -15,5 +15,7 @@
 //= require turbolinks
 //= require tether
 //= require bootstrap
+//= require moment
+//= require bootstrap-datetimepicker
 //= require AdminLTE
 //= require_tree .
