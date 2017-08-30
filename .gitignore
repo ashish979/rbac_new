@@ -15,8 +15,6 @@
 .idea
 
 ignore all config files
-config/database.yml
-config/secrets.yml
 
 ignore public files
 /public
