@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.4.0'
+ruby '2.6.3'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -48,7 +48,7 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 # Bootstrap datetime picker for rails
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
-
+gem 'mysql2'
 group :deployment do
   gem 'capistrano', '~> 3.6'
   gem 'capistrano-rails', '~> 1.2'
